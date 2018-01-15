@@ -207,7 +207,7 @@ void bf_init(bf_ctx *ctx, unsigned char *key, int keyLen) {
 
   for (i = 0; i < 4; ++i) {
     for (j = 0; j < 256; j += 2) {
-      bf_function(DECRYPT, ctx, &l, &r);
+      bf_function(ENCRYPT, ctx, &l, &r);
       ctx->S[i][j] = l;
       ctx->S[i][j + 1] = r;
     }
