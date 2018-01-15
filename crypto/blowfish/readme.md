@@ -9,3 +9,5 @@ in the code size nor acheive any performance gains.
 .. Experimentation continues .. 
 
 See bf_test.c on how to use this implementation.
+
+If you chance upon this source and have ideas on how to improve the code size and/or achieve better performance, I am all ears.
