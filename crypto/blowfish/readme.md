@@ -4,7 +4,7 @@ The primary purpose of this implementation is to understand the algorithm and ex
 And a further objective is to seek improvement in performance.
 
 The original implementation itself is highly optimized. I am afraid I haven't quite been able to realize any significant reduction
-in the code size or performance gains.
+in the code size nor acheive any performance gains.
 
 .. Experimentation continues .. 
 
