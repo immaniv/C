@@ -19,7 +19,7 @@ void main(void) {
   bf_function(DECRYPT, &ctx, &L, &R);
   
   if (L == 1 && R == 2)
-  	printf("Decryption: OK\n");
+    printf("Decryption: OK\n");
   else
-	  printf("Decryption: FAIL\n");
+    printf("Decryption: FAIL\n");
 }
