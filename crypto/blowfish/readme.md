@@ -4,8 +4,8 @@ This is a fully functional modification of Bruce Schneier & Paul Kochers impleme
 The primary purpose of this modification is to understand the algorithm and experiment in ways to reduce the overall code size.
 And a further objective is to seek improvement in performance.
 
-The original implementation itself is highly optimized. I am afraid I haven't quite been able to realize any significant reduction
-in the code size nor acheive any performance gains.
+The original implementation itself is highly optimized. I am afraid I have only been able to realize minimal reduction
+in the code size. I am highly doubtful that I've acheived any performance gains.
 
 Further, I think any reduction in code size is dubious and I must admit that I am not quite satisifed.
 
