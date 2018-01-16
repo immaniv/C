@@ -1,5 +1,5 @@
 
-This is a fully functional modification of Bruce Schneier & Paul Kochers implementation of Blowfish Algorithm.
+This is a fully functional modification of Bruce Schneiers & Paul Kochers implementation of Blowfish Algorithm.
 
 The primary purpose of this modification is to understand the algorithm and experiment in ways to reduce the overall code size.
 And a further objective is to seek improvement in performance.
