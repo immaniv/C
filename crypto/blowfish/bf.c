@@ -192,9 +192,8 @@ void bf_init(bf_ctx *ctx, unsigned char *key, int keyLen) {
     ctx->P[i] = ORIG_P[i] ^ d;
   }
 
-  l = 0x00000000;
-  r = 0x00000000;
-
+  l = r = 0x00000000;
+  
   for (i = 0; i < N + 2; i += 2) {
     bf_function(ENCRYPT, ctx, &l, &r);
     ctx->P[i] = l;
