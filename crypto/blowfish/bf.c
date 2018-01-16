@@ -152,26 +152,22 @@ static unsigned long F(bf_ctx *ctx, unsigned long x) {
    return (((ctx->S[0][a] + ctx->S[1][b]) ^ ctx->S[2][c]) + ctx->S[3][d]);
 }
 
-void bf_function(int fvalue, bf_ctx *ctx, unsigned long *l, unsigned long *r){
- 
+void bf_function(int fvalue, bf_ctx *ctx, unsigned long *l, unsigned long *r)
+{
   if (fvalue == ENCRYPT) { 
     for (int i = 0; i < N; i++) {
-      *l ^= ctx->P[i];
-      *r ^= F(ctx, *l);
+      *r ^= F(ctx, (*l ^= ctx->P[i]));
       swap(*l, *r, unsigned long);
     }
     swap(*l, *r, unsigned long);
-    *r ^= ctx->P[N];
-    *l ^= ctx->P[N + 1];
+    *r ^= ctx->P[N]; *l ^= ctx->P[N + 1];
   } else if (fvalue == DECRYPT) {
     for (int i = N + 1; i > 1; i--) {
-      *l ^= ctx->P[i];
-      *r ^= F(ctx, *l);
+      *r ^= F(ctx, (*l ^= ctx->P[i]));
       swap(*l, *r, unsigned long);
     }
     swap(*l, *r, unsigned long);
-    *r ^= ctx->P[1];
-    *l ^= ctx->P[0];
+    *r ^= ctx->P[1]; *l ^= ctx->P[0];
   }
 }
 
