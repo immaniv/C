@@ -139,20 +139,18 @@ static const unsigned long ORIG_S[4][256] = {
         0x90D4F869L, 0xA65CDEA0L, 0x3F09252DL, 0xC208E69FL, 0xB74E6132L, 0xCE77E25BL, 0x578FDFE3L, 0x3AC372E6L  }
 }; 
 
-static unsigned long F(bf_ctx *ctx, unsigned long x) {
+static unsigned long inline F(bf_ctx *ctx, unsigned long x) {
    unsigned short a, b, c, d;
 
-   d = (unsigned short)(x & 0xFF);
-   x >>= 8;
-   c = (unsigned short)(x & 0xFF);
-   x >>= 8;
-   b = (unsigned short)(x & 0xFF);
-   x >>= 8;
-   a = (unsigned short)(x & 0xFF);
+   d = (unsigned short)(x & 0xFF); 
+   c = (unsigned short)((x >>= 8) & 0xFF));
+   b = (unsigned short)((x >>= 8) & 0xFF));
+   a = (unsigned short)((x >>= 8) & 0xFF));
+   
    return (((ctx->S[0][a] + ctx->S[1][b]) ^ ctx->S[2][c]) + ctx->S[3][d]);
 }
 
-void bf_function(int fvalue, bf_ctx *ctx, unsigned long *l, unsigned long *r)
+void inline bf_function(int fvalue, bf_ctx *ctx, unsigned long *l, unsigned long *r)
 {
   if (fvalue == ENCRYPT) { 
     for (int i = 0; i < N; i++) {
@@ -175,14 +173,13 @@ void bf_init(bf_ctx *ctx, unsigned char *key, int keyLen) {
   int i, j, k;
   unsigned long d, l, r;
 
-  for (i = 0; i < 4; i++) {
+  for (i = 0; i < 4; i++) 
     for (j = 0; j < 256; j++)
       ctx->S[i][j] = ORIG_S[i][j];
-  }
-
+ 
   j = 0;
   for (i = 0; i < N + 2; i++) {
-    d = 0x00000000;
+    d = 0;
     for (k = 0; k < 4; k++) {
       d = (d << 8) | key[j];
       j++;
@@ -192,8 +189,7 @@ void bf_init(bf_ctx *ctx, unsigned char *key, int keyLen) {
     ctx->P[i] = ORIG_P[i] ^ d;
   }
 
-  l = r = 0x00000000;
-  
+  l = r = 0;
   for (i = 0; i < N + 2; i += 2) {
     bf_function(ENCRYPT, ctx, &l, &r);
     ctx->P[i] = l;
